@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
-
+import EmblemaVerde from '@/components/emblema_verde';
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
         },
 });
 
+
 export default function Index() {
 
     const popularData = [
@@ -244,23 +245,8 @@ export default function Index() {
             ))}
         </ScrollView>
 
-        {/* Seção Popular */}
-        <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Popular</Text>
-            <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.viewAllButton}>
-                <Text style={styles.viewAllButtonText}>Visualizar tudo</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.arrowButton}>
-              {/* Ícone de seta */}
-            </TouchableOpacity>
-            </View>
-        </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.popularScroll}>
-            {popularData.map(item => (
-            <View key={item.id} style={[styles.popularCard, { backgroundColor: item.color }]} />
-            ))}
-        </ScrollView>
+        {/* Função do Emblema */}
+        {EmblemaVerde()}
         </ScrollView>
     </SafeAreaView>
     );

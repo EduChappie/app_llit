@@ -122,8 +122,9 @@ const styles = StyleSheet.create({
     dailyConversationsCard: {
         backgroundColor: '#007aff',
         borderRadius: 20,
+        position: 'relative',
         padding: 20,
-        width: (width - 60) / 2, // Ajusta a largura para metade da tela com espaçamento
+        width: '50%', // Ajusta a largura para metade da tela com espaçamento
         height: 150,
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -132,6 +133,7 @@ const styles = StyleSheet.create({
     dailyConversationsTitle: {
         color: '#fff',
         fontSize: 16,
+        marginBottom: 55,
         fontWeight: 'bold',
         },
     dailyConversationsRating: {
@@ -143,10 +145,11 @@ const styles = StyleSheet.create({
         height: 80,
         },
     emptyCard: {
-        width: (width - 60) / 2, // Card vazio para preencher o espaço
+        width: 120, // Card vazio para preencher o espaço
         height: 150,
         backgroundColor: '#52b788', // Cor verde de exemplo
         borderRadius: 20,
+        marginLeft: 20,
         },
     popularScroll: {
         marginBottom: 20,
@@ -157,6 +160,14 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginRight: 15,
         },
+    mascote: {
+        width: '110%',
+        height: '110%',
+        bottom: '-25%',
+        right: '-76%',
+        resizeMode: 'contain',
+        position: 'absolute',
+    },
 });
 
 
@@ -175,7 +186,7 @@ export default function Index() {
         {/* Header */}
         <View style={styles.header}>
 
-            <Image source={require('../assets/home/barra-de-menu.png')} style={styles.icon} />
+            <Image source={require('@/assets/home/barra-de-menu.png')} style={styles.icon} />
 
             <View style={styles.userInfo}>
             <View style={styles.userStatus}>
@@ -183,7 +194,7 @@ export default function Index() {
                 <Text style={styles.xp}>546XP p/prox nível</Text>
             </View>
 
-            <Image source={require('../assets/home/avatar.png')} style={styles.avatar} />
+            <Image source={require('@/assets/home/avatar.png')} style={styles.avatar} />
 
             </View>
         </View>
@@ -199,7 +210,7 @@ export default function Index() {
                     
                 </View>*/}
             </View>
-        <Image source={require('../assets/home/3d_modelo.png')} style={styles.dailyMissionsImage} />
+        <Image source={require('@/assets/home/3d_modelo.png')} style={styles.dailyMissionsImage} />
         </View>
 
         {/* Seção Atividades LTM */}
@@ -217,14 +228,19 @@ export default function Index() {
 
         {/* Seção Conversas Diárias */}
         <View style={styles.dailyConversationsContainer}>
-            <View style={styles.dailyConversationsCard}>
-            <View>
-                <Text style={styles.dailyConversationsTitle}>Conversas Diárias</Text>
-                <Text style={styles.dailyConversationsRating}>★ 5.0</Text>
-            </View>
-            </View>
-          {/* Card vazio para alinhamento */}
-            <View style={styles.emptyCard} />
+            <ScrollView horizontal showsHorizontalScrollIndicator={true} style={styles.popularScroll}>
+                <View style={styles.dailyConversationsCard}>
+                <View>
+                    <Text style={styles.dailyConversationsTitle}>Conversas Diárias</Text>
+                    <Text style={styles.dailyConversationsRating}>★ 5.0</Text>
+                    <Image style={styles.mascote} source={require('@/assets/home/llit_mascote.png')} />
+                </View>
+                </View>
+            {/* Card vazio para alinhamento */}
+                
+                <View style={styles.emptyCard} />
+                <View style={styles.emptyCard} />
+            </ScrollView>
         </View>
 
         {/* Seção Popular */}

@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     StatusBar,
 } from "react-native";
-import emblemaStyle from "@/components/ui/emblema_verde_sty";
+import emblemaStyle from "@/components/ui/eduardo_ui/emblema_verde_sty";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons, Feather } from "@expo/vector-icons";
 // --------------- Importações

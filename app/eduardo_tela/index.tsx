@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
-import EmblemaVerde from '@/components/emblema_verde';
+import EmblemaVerde from '@/components/eduardo_components/emblema_verde';
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
@@ -186,7 +186,7 @@ export default function Index() {
         {/* Header */}
         <View style={styles.header}>
 
-            <Image source={require('@/assets/home/barra-de-menu.png')} style={styles.icon} />
+            <Image source={require('@/assets/eduardo_home/barra-de-menu.png')} style={styles.icon} />
 
             <View style={styles.userInfo}>
             <View style={styles.userStatus}>
@@ -194,7 +194,7 @@ export default function Index() {
                 <Text style={styles.xp}>546XP p/prox nível</Text>
             </View>
 
-            <Image source={require('@/assets/home/avatar.png')} style={styles.avatar} />
+            <Image source={require('@/assets/eduardo_home/avatar.png')} style={styles.avatar} />
 
             </View>
         </View>
@@ -210,7 +210,7 @@ export default function Index() {
                     
                 </View>*/}
             </View>
-        <Image source={require('@/assets/home/3d_modelo.png')} style={styles.dailyMissionsImage} />
+        <Image source={require('@/assets/eduardo_home/3d_modelo.png')} style={styles.dailyMissionsImage} />
         </View>
 
         {/* Seção Atividades LTM */}
@@ -233,7 +233,7 @@ export default function Index() {
                 <View>
                     <Text style={styles.dailyConversationsTitle}>Conversas Diárias</Text>
                     <Text style={styles.dailyConversationsRating}>★ 5.0</Text>
-                    <Image style={styles.mascote} source={require('@/assets/home/llit_mascote.png')} />
+                    <Image style={styles.mascote} source={require('@/assets/eduardo_home/llit_mascote.png')} />
                 </View>
                 </View>
             {/* Card vazio para alinhamento */}

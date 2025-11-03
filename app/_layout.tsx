@@ -5,18 +5,22 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
+        {/* AS TELAs ADICIONADAS AQUI */}
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="welcome2" options={{ headerShown: false }} />
+        <Stack.Screen name="createUser" options={{ headerShown: false }} />
+        {/* <Stack.Screen name="accountCreated" options={{ headerShown: false }} /> */}
+
+      {/* A tela de abas continua aqui, para quando precisar dela */}
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+        
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

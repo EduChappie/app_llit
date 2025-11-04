@@ -1,21 +1,25 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import {
-  useFonts,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+// --- 1. IMPORTAR O ROUTER ---
+import {
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_700Bold,
+  useFonts,
 } from "@expo-google-fonts/outfit";
+import { useRouter } from "expo-router";
 
-export default function QuizScreen({ navigation }) {
+export default function QuizScreen() {
+  // --- 3. INICIAR O ROUTER ---
+  const router = useRouter();
+
   let [fontsLoaded] = useFonts({
     Outfit_300Light,
     Outfit_400Regular,
@@ -100,7 +104,7 @@ export default function QuizScreen({ navigation }) {
               </View>
             </TouchableOpacity>
 
-            {/* Opção 4  */}
+            {/* Opção 4  */}
             <TouchableOpacity style={styles.optionButtonTouchable}>
               <View style={[styles.optionButtonBase, styles.optionButtonWhite]}>
                 <Text style={[styles.optionTextBase, styles.optionTextDark]}>
@@ -112,9 +116,10 @@ export default function QuizScreen({ navigation }) {
 
           {/* 5. Botão "Enviar resposta" */}
           <View style={styles.bottomBar}>
+            {/* --- 4.router.push() --- */}
             <TouchableOpacity
               style={styles.nextButton}
-              onPress={() => navigation.navigate("Completion")}
+              onPress={() => router.push("./CompletionScreen")}
             >
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}

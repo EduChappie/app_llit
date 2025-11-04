@@ -1,29 +1,33 @@
-import React from "react"; // <-- Adicionado React.useState
-import ShareModal from "./components/ShareModal"; // <-- Adicionado o import do Modal
 import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
-import {
-  useFonts,
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_700Bold,
+  useFonts,
 } from "@expo-google-fonts/outfit";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import React from "react";
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-export default function HomeScreen({ navigation }) {
-  // --- 1. ADICIONADO: Estado para controlar o modal ---
+import { useRouter } from "expo-router";
+
+import ShareModal from "../../components/raul_components/ShareModal";
+
+export default function HomeScreen() {
+  // --- 3. INICIAR O ROUTER ---
+  const router = useRouter();
+
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const openModal = () => setIsModalVisible(true);
   const closeModal = () => setIsModalVisible(false);
-  // --- FIM DA ADIÇÃO ---
 
   let [fontsLoaded] = useFonts({
     Outfit_300Light,
@@ -46,11 +50,12 @@ export default function HomeScreen({ navigation }) {
         <ScrollView style={{ flex: 1 }}>
           {/* --- CABEÇALHO --- */}
           <View style={styles.header}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            {/* --- 4.  router.back() --- */}
+            <TouchableOpacity onPress={() => router.back()}>
               <Ionicons name="chevron-back" size={28} color="white" />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Detalhes da atividade</Text>
-            {/* --- Botão de compartilhar  */}
+            {/* --- Botão de compartilhar  */}
             <TouchableOpacity onPress={openModal}>
               <Ionicons name="share-social-outline" size={24} color="white" />
             </TouchableOpacity>
@@ -92,7 +97,7 @@ export default function HomeScreen({ navigation }) {
                 ]}
               >
                 <Image
-                  source={require("./assets/Icone_livro_card1.png")}
+                  source={require("@/assets/raul_assets/Icone_livro_card1.png")}
                   style={styles.cardIcon}
                 />
                 <Text style={styles.statNumber}>01</Text>
@@ -109,7 +114,7 @@ export default function HomeScreen({ navigation }) {
                 ]}
               >
                 <Image
-                  source={require("./assets/icone_check_card2.png")}
+                  source={require("@/assets/raul_assets/icone_check_card2.png")}
                   style={styles.cardIcon}
                 />
                 <Text style={styles.statNumber}>03</Text>
@@ -126,7 +131,7 @@ export default function HomeScreen({ navigation }) {
                 ]}
               >
                 <Image
-                  source={require("./assets/icone_hora_card3.png")}
+                  source={require("@/assets/raul_assets/icone_hora_card3.png")}
                   style={styles.cardIcon}
                 />
                 <Text style={styles.statNumber}>06</Text>
@@ -144,11 +149,11 @@ export default function HomeScreen({ navigation }) {
             {/* --- Título "Atividades" --- */}
             <Text style={styles.sectionTitle}>Atividades</Text>
 
-            {/* --- Card da Atividade  --- */}
+            {/* --- Card da Atividade  --- */}
             <TouchableOpacity style={styles.activityCard}>
               <View style={styles.activityLeft}>
                 <Image
-                  source={require("./assets/icone_bandeira.png")}
+                  source={require("@/assets/raul_assets/icone_bandeira.png")}
                   style={styles.activityIcon}
                 />
                 <View>
@@ -160,23 +165,24 @@ export default function HomeScreen({ navigation }) {
               </View>
               <View style={styles.activityCheckmark}>
                 <Image
-                  source={require("./assets/icone_concluido.png")}
+                  source={require("@/assets/raul_assets/icone_concluido.png")}
                   style={styles.checkmarkIcon}
                 />
               </View>
             </TouchableOpacity>
 
-            {/* --- Botões do Rodapé  --- */}
+            {/* --- Botões do Rodapé  --- */}
             <View style={styles.footerButtonContainer}>
               <TouchableOpacity style={styles.bookmarkButton}>
                 <Image
-                  source={require("./assets/icone_salvar.png")}
+                  source={require("@/assets/raul_assets/icone_salvar.png")}
                   style={styles.bookmarkIcon}
                 />
               </TouchableOpacity>
+              {/* --- 5. MUDADO PARA router.push() --- */}
               <TouchableOpacity
                 style={styles.startButton}
-                onPress={() => navigation.navigate("Activity")}
+                onPress={() => router.push("./ActivityScreen")}
               >
                 <LinearGradient
                   colors={["#FFBE0B", "#FB7907"]}
@@ -190,14 +196,11 @@ export default function HomeScreen({ navigation }) {
         </ScrollView>
       </SafeAreaView>
 
-      {/* --- 3. ADICIONADO: O componente ShareModal --- */}
       <ShareModal visible={isModalVisible} onClose={closeModal} />
-      {/* --- FIM DA ADIÇÃO --- */}
     </LinearGradient>
   );
 }
 
-// --- ESTILOS (O StyleSheet continua o mesmo) ---
 const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: { flex: 1 },

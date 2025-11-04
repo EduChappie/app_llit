@@ -1,21 +1,19 @@
-import React from "react";
 import {
-  StyleSheet,
-  View,
-  Text,
-  Modal,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
-import { BlurView } from "expo-blur";
-import {
-  useFonts,
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_700Bold,
+  useFonts,
 } from "@expo-google-fonts/outfit";
+import { BlurView } from "expo-blur";
+import { LinearGradient } from "expo-linear-gradient";
+import {
+  Image,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function ShareModal({ visible, onClose }) {
   let [fontsLoaded] = useFonts({
@@ -73,7 +71,7 @@ export default function ShareModal({ visible, onClose }) {
             </LinearGradient>
 
             <Image
-              source={require("../assets/pentagono.png")}
+              source={require("@/assets/raul_assets/pentagono.png")} // <-- MUDADO
               style={styles.pentagonImage}
             />
 

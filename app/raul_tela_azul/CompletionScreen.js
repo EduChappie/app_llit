@@ -1,25 +1,27 @@
-import React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 import {
-  View,
-  Text,
-  StyleSheet,
+  Image,
   SafeAreaView,
   ScrollView,
+  StyleSheet,
+  Text,
   TouchableOpacity,
-  Image,
+  View,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-
-import { Ionicons } from "@expo/vector-icons";
+// --- 1. IMPORTAR O ROUTER ---
 import {
-  useFonts,
   Outfit_200ExtraLight,
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_700Bold,
+  useFonts,
 } from "@expo-google-fonts/outfit";
+import { useRouter } from "expo-router";
 
-export default function CompletionScreen({ navigation }) {
+export default function CompletionScreen() {
+  // --- 3. INICIAR O ROUTER ---
+  const router = useRouter();
+
   let [fontsLoaded] = useFonts({
     Outfit_200ExtraLight,
     Outfit_300Light,
@@ -53,13 +55,13 @@ export default function CompletionScreen({ navigation }) {
           <View style={styles.medalContainer}>
             {/* Imagem 1: O Hexágono */}
             <Image
-              source={require("./assets/hexa.png")}
+              source={require("@/assets/raul_assets/hexa.png")}
               style={styles.hexagonImage}
             />
 
             {/* Imagem 2: A Medalha Prata */}
             <Image
-              source={require("./assets/medalha_prata.png")}
+              source={require("@/assets/raul_assets/medalha_prata.png")}
               style={styles.medalImage}
             />
           </View>
@@ -74,9 +76,10 @@ export default function CompletionScreen({ navigation }) {
 
           {/* 6. Botão "Maravilha!"*/}
           <View style={styles.bottomBar}>
+            {/* --- 4.router.replace() --- */}
             <TouchableOpacity
               style={styles.actionButton}
-              onPress={() => navigation.navigate("Home")} // Volta para a Home
+              onPress={() => router.replace("/")} // Volta para a Home (rota raiz)
             >
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}

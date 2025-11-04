@@ -1,22 +1,26 @@
-import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import {
-  View,
-  Text,
-  StyleSheet,
   SafeAreaView,
   ScrollView,
+  StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
+
 import {
-  useFonts,
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_700Bold,
+  useFonts,
 } from "@expo-google-fonts/outfit";
+import { useRouter } from "expo-router";
 
-export default function ActivityScreen({ navigation }) {
+export default function ActivityScreen() {
+  // --- 3. INICIAR O ROUTER ---
+  const router = useRouter();
+
   let [fontsLoaded] = useFonts({
     Outfit_300Light,
     Outfit_400Regular,
@@ -49,17 +53,17 @@ export default function ActivityScreen({ navigation }) {
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
         >
-          {/* --- 2. NOVO: O Botão Voltar --- */}
+          {/* --- 4. router.back() --- */}
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => navigation.goBack()}
+            onPress={() => router.back()}
           >
             <Ionicons name="chevron-back" size={28} color="white" />
           </TouchableOpacity>
         </LinearGradient>
 
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          {/* Card Ciano  */}
+          {/* Card Ciano  */}
           <View style={styles.cardCyan}>
             {/* ... (gradientes internos do card) ... */}
             <LinearGradient
@@ -83,11 +87,12 @@ export default function ActivityScreen({ navigation }) {
           {/* Card Branco */}
           <View style={styles.cardWhite} />
 
-          {/* Botão "Próximo passo"  */}
+          {/* Botão "Próximo passo"  */}
           <View style={styles.bottomBar}>
+            {/* --- 5. router.push() --- */}
             <TouchableOpacity
               style={styles.nextButton}
-              onPress={() => navigation.navigate("Quiz")}
+              onPress={() => router.push("./QuizScreen")}
             >
               {/* ... (gradiente do botão com sombras internas) ... */}
               <LinearGradient

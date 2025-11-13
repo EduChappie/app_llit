@@ -3,10 +3,10 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from "./HomeScreen";
-import ActivityScreen from "./ActivityScreen";
-import QuizScreen from "./QuizScreen";
-import CompletionScreen from "./CompletionScreen";
+import HomeScreen from "./raul_tela_azul/HomeScreen";
+import ActivityScreen from "./raul_tela_azul/ActivityScreen";
+import QuizScreen from "./raul_tela_azul/QuizScreen";
+import CompletionScreen from "./raul_tela_azul/CompletionScreen";
 
 import {
   useFonts,
@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Home">
         {/* A sua tela principal. O 'headerShown: false' esconde o cabeçalho DUPLO */}
         <Stack.Screen
           name="Home"

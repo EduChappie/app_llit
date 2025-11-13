@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, SafeAreaVi
 import EmblemaVerde from '@/components/eduardo_components/emblema_verde';
 const { width } = Dimensions.get('window');
 
+import { useRouter } from "expo-router";
+
 const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
@@ -172,6 +174,8 @@ const styles = StyleSheet.create({
 
 
 export default function Index() {
+
+    const rout = useRouter();
 
     const popularData = [
         { id: '1', color: '#6a1b9a' },

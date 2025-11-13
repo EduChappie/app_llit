@@ -3,10 +3,12 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from "./raul_tela_azul/HomeScreen";
-import ActivityScreen from "./raul_tela_azul/ActivityScreen";
-import QuizScreen from "./raul_tela_azul/QuizScreen";
-import CompletionScreen from "./raul_tela_azul/CompletionScreen";
+import Index from "./index";
+
+import HomeScreen from "./HomeScreen";
+import ActivityScreen from "./ActivityScreen";
+import QuizScreen from "./QuizScreen";
+import CompletionScreen from "./CompletionScreen";
 
 import {
   useFonts,
@@ -16,6 +18,19 @@ import {
 } from "@expo-google-fonts/outfit";
 
 const Stack = createNativeStackNavigator();
+
+const linking = {
+  prefixes: ["http://localhost:8081", "exp://localhost:8081"],
+  config: {
+    screens: {
+      Index: "",
+      Home: "Home",
+      Activity: "Activity",
+      Quiz: "Quiz",
+      Completion: "Completion",
+    },
+  },
+};
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -29,27 +44,29 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        {/* A sua tela principal. O 'headerShown: false' esconde o cabeçalho DUPLO */}
+    <NavigationContainer linking={linking}>
+
+      <Stack.Navigator initialRouteName="Index">
+        <Stack.Screen
+          name="Index"
+          component={Index}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{ headerShown: false }}
         />
-
         <Stack.Screen
           name="Activity"
           component={ActivityScreen}
           options={{ headerShown: false }}
         />
-
         <Stack.Screen
           name="Quiz"
           component={QuizScreen}
           options={{ headerShown: false }}
         />
-
         <Stack.Screen
           name="Completion"
           component={CompletionScreen}

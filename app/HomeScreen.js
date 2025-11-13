@@ -19,7 +19,7 @@ import {
 
 import { useRouter } from "expo-router";
 
-import ShareModal from "../../components/raul_components/ShareModal";
+import ShareModal from "../components/raul_components/ShareModal";
 
 export default function HomeScreen() {
   // --- 3. INICIAR O ROUTER ---

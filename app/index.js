@@ -6,12 +6,12 @@ const PrimeiraTela = () => {
   return (
     <View style={styles.container}>
       <Image 
-        source={require('../assets/images/BIXO.png')} 
+        source={require('../assets/fotos/BIXO.png')} 
         style={styles.mascote}
       />
       <Image 
 
-        source={require('../assets/images/LLIAlogo.png')} 
+        source={require('../assets/fotos/LLIAlogo.png')} 
         style={styles.logo}
       />
 

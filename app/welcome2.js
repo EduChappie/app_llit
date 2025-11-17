@@ -9,11 +9,11 @@ const WelcomeScreen2 = () => {
             <Text style={styles.voltarButtonText}>‹</Text>
   </TouchableOpacity>
       <Image 
-        source={require('../assets/images/BIXO.png')} 
+        source={require('../assets/fotos/BIXO.png')} 
         style={styles.mascote}
       />
       <Image 
-        source={require('../assets/images/LLIAlogo.png')} 
+        source={require('../assets/fotos/LLIAlogo.png')} 
         style={styles.logo}
       />
 
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#D3D3D3',
   },
   botao: {
+    
     backgroundColor: '#FFA500',
     paddingVertical: 15,
     paddingHorizontal: 60,

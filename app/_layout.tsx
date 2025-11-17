@@ -12,10 +12,10 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         {/* AS TELAs ADICIONADAS AQUI */}
-        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="index"options={{ headerShown: false }} />
         <Stack.Screen name="welcome2" options={{ headerShown: false }} />
         <Stack.Screen name="createUser" options={{ headerShown: false }} />
-        {/* <Stack.Screen name="accountCreated" options={{ headerShown: false }} /> */}
+        <Stack.Screen name="confirmacao" options={{ headerShown: false }} />
 
       {/* A tela de abas continua aqui, para quando precisar dela */}
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

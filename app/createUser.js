@@ -13,10 +13,10 @@ import {
 
 // --- ÁREA DE EDIÇÃO DOS AVATARES ---
 const AVATARES = [
-  { id: '5', type: 'image', value: require('../assets/images/bixo1.png') },
-  { id: '6', type: 'image', value: require('../assets/images/bixo2.png') },
-  { id: '7', type: 'image', value: require('../assets/images/bixo3.png') },
-  { id: '8', type: 'image', value: require('../assets/images/bixa2.png') },
+  { id: '5', type: 'image', value: require('../assets/fotos/bixo1.png') },
+  { id: '6', type: 'image', value: require('../assets/fotos/bixo2.png') },
+  { id: '7', type: 'image', value: require('../assets/fotos/bixo3.png') },
+  { id: '8', type: 'image', value: require('../assets/fotos/bixa2.png') },
 ];
 
 const CreateUserScreen = () => {
@@ -54,7 +54,7 @@ const CreateUserScreen = () => {
 
       {/* --- IMAGEM CENTRAL --- */}
       <Image 
-        source={require('../assets/images/BIXO.png')} 
+        source={require('../assets/fotos/BIXO.png')} 
         style={styles.mascote}
       />
 
@@ -104,10 +104,11 @@ const CreateUserScreen = () => {
       {/* --- BOTÃO PROSSEGUIR --- */}
       <TouchableOpacity 
         style={styles.proceedButton} 
-        onPress={() => router.push('/accountCreated')} 
+        onPress={() => router.push('/confirmacao')}
       >
         <Text style={styles.proceedButtonText}>Prosseguir</Text>
       </TouchableOpacity>
+
     </SafeAreaView>
   );
 };

@@ -36,12 +36,12 @@ export default function ShareModal({ visible, onClose }) {
       <BlurView intensity={80} tint="dark" style={StyleSheet.absoluteFill}>
         <View style={styles.centeredView}>
           <View style={styles.modalContentContainer}>
-            {/* --- Card 1 (Escuro, Fundo) --- */}
+            {/* Card 1  */}
             <View style={styles.card1}>
               <Text style={styles.card1Text}>Suas atividades</Text>
             </View>
 
-            {/* --- Card 2 (Claro, Frente) --- */}
+            {/*Card 2*/}
             <LinearGradient
               colors={["#FFC72C", "#FF9F00"]}
               start={{ x: 0, y: 0 }}
@@ -53,7 +53,7 @@ export default function ShareModal({ visible, onClose }) {
                 Compartilhe com os seus amigos e familiares
               </Text>
 
-              {/*COMPARTILHAMENTO (PNGs Integrados)*/}
+              {/*COMPARTILHAMENTO*/}
               <View style={styles.shareButtonsContainer}>
                 {/* WhatsApp */}
                 <TouchableOpacity style={styles.iconButtonWrapper}>
@@ -91,7 +91,7 @@ export default function ShareModal({ visible, onClose }) {
               style={styles.pentagonImage}
             />
 
-            {/* --- Botão Voltar*/}
+            {/*Botão Voltar*/}
             <TouchableOpacity style={styles.backButton} onPress={onClose}>
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}

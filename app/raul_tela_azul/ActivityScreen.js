@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// --- 1. IMPORTAR O ROUTER ---
+
 import {
   Outfit_300Light,
   Outfit_400Regular,
@@ -17,9 +17,7 @@ import {
 } from "@expo-google-fonts/outfit";
 import { useRouter } from "expo-router";
 
-// --- 2. REMOVER O "{ navigation }" ---
 export default function ActivityScreen() {
-  // --- 3. INICIAR O ROUTER ---
   const router = useRouter();
 
   let [fontsLoaded] = useFonts({
@@ -54,17 +52,15 @@ export default function ActivityScreen() {
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
         >
-          {/* --- 4. MUDADO PARA router.back() --- */}
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => router.back()} // <-- CORREÇÃO AQUI
+            onPress={() => router.back()}
           >
             <Ionicons name="chevron-back" size={28} color="white" />
           </TouchableOpacity>
         </LinearGradient>
 
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          {/* Card Ciano  */}
           <View style={styles.cardCyan}>
             <LinearGradient
               colors={["#00A3CB", "transparent"]}
@@ -84,15 +80,13 @@ export default function ActivityScreen() {
             />
           </View>
 
-          {/* Card Branco */}
           <View style={styles.cardWhite} />
 
           {/* Botão "Próximo passo"  */}
           <View style={styles.bottomBar}>
-            {/* --- 5. MUDADO PARA router.push() --- */}
             <TouchableOpacity
               style={styles.nextButton}
-              onPress={() => router.push("./QuizScreen")} // <-- CORREÇÃO AQUI
+              onPress={() => router.push("./QuizScreen")}
             >
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}

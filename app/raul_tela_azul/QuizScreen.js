@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// --- NOVO: Adicionado Ionicons (Para o botão de voltar) ---
+//Para o botão de voltar
 import {
   Outfit_300Light,
   Outfit_400Regular,
@@ -19,7 +19,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Video } from "expo-av";
 import { useState } from "react";
 
-// --- DADOS REAIS DO QUIZ (Correto) ---
+//DADOS REAIS DO QUIZ
 const QUESTIONS = [
   {
     id: 1,
@@ -58,9 +58,8 @@ const QUESTIONS = [
     ],
   },
 ];
-// --- FIM DOS DADOS ---
+// FIM DOS DADOS
 
-// --- ESTILOS MOVIDOS PARA O TOPO (RESOLVE O ERRO TDZ) ---
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -80,12 +79,10 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     elevation: 20,
 
-    // Estilos para posicionar o botão voltar
     justifyContent: "flex-end",
     paddingBottom: 10,
   },
   backButton: {
-    // Estilo para a área de clique do botão voltar
     width: 60,
     height: 40,
     justifyContent: "center",
@@ -231,9 +228,7 @@ const styles = StyleSheet.create({
   },
   nextButtonText: { color: "#FFFFFF", fontFamily: "Outfit_700Bold", zIndex: 2 },
 });
-// --- FIM DOS ESTILOS ---
 
-// --- 2. REMOVIDO { navigation } ---
 export default function QuizScreen() {
   const router = useRouter();
 
@@ -254,7 +249,6 @@ export default function QuizScreen() {
     return null;
   }
 
-  // --- FUNÇÕES DE LÓGICA (CONTINUA IGUAL) ---
   const handleSelectAnswer = (id) => {
     if (!isAnswerSubmitted) {
       setSelectedAnswerId(id);
@@ -314,7 +308,6 @@ export default function QuizScreen() {
     }
   };
 
-  // O que vai escrito no botão de rodapé
   let nextButtonText = "Enviar resposta";
   if (isAnswerSubmitted) {
     nextButtonText =
@@ -342,7 +335,7 @@ export default function QuizScreen() {
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
         >
-          {/* --- NOVO: O Botão Voltar --- */}
+          {/* O Botão Voltar  */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => router.back()}

@@ -66,7 +66,7 @@ export default function CompletionScreen() {
       title: "Não foi dessa vez :(",
       message:
         "Não se desmotive! Continue treinando as suas habilidades em LIBRAS para dominar de maneira simples e divertida.",
-      colors: styles.failureColors, // Usará as novas failureColors
+      colors: styles.failureColors,
       buttonText: "Voltar ao início",
     }; // 0/3 (ou qualquer outro)
   })();
@@ -75,10 +75,9 @@ export default function CompletionScreen() {
 
   return (
     <LinearGradient colors={result.colors} style={styles.container}>
-      {/* SEGUNDO GRADIENTE PARA PROFUNDIDADE - AGORA CONDICIONAL */}
       {isFailureScreen ? (
         <LinearGradient
-          colors={["transparent", "#620000"]} // Tons de vermelho para a profundidade
+          colors={["transparent", "#620000"]}
           locations={[0.4, 1.0]}
           style={StyleSheet.absoluteFill}
         />
@@ -103,7 +102,7 @@ export default function CompletionScreen() {
             />
           </View>
 
-          {/* 4. Barra de Progresso com score DENTRO */}
+          {/* 4.Barra de Progresso*/}
           <View style={styles.scoreBarContainer}>
             <View style={styles.progressBarWrapper}>
               <View
@@ -114,17 +113,17 @@ export default function CompletionScreen() {
                     : styles.progressBarTrackSuccess,
                 ]}
               >
-                {/* Apenas mostra o indicador vermelho se score for 0 */}
+                {/*vermelho se score for 0 */}
                 {score === 0 && <View style={styles.progressIndicatorRed} />}
 
                 <View
                   style={[
                     styles.progressBarFill,
                     { width: `${(score / total) * 100}%` },
-                    score === 0 && { backgroundColor: "transparent" }, // Fundo transparente se score for 0
+                    score === 0 && { backgroundColor: "transparent" },
                   ]}
                 />
-                {/* Score textual dentro da barra */}
+                {/* Score textual*/}
                 <Text
                   style={styles.scoreTextInsideBar}
                 >{`${score}/${total} acertos`}</Text>
@@ -167,10 +166,9 @@ export default function CompletionScreen() {
 }
 
 const styles = StyleSheet.create({
-  // --- CORES DA LÓGICA ---
   successColors: ["#0565D9", "#0AB6FC", "#0565D9"],
-  failureColors: ["#E40000", "#ac0606ff", "#980a0aff"], // Agora todos são tons de vermelho
-  // --- ESTILOS DE ESTRUTURA ---
+  failureColors: ["#E40000", "#ac0606ff", "#980a0aff"],
+
   container: {
     flex: 1,
     position: "relative",
@@ -184,7 +182,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 
-  // --- BARRA DE SCORE ---
+  // BARRA DE SCORE
   scoreBarContainer: {
     alignItems: "center",
     marginBottom: 40,
@@ -236,9 +234,9 @@ const styles = StyleSheet.create({
     color: "white",
     zIndex: 11,
   },
-  // --- FIM BARRA DE SCORE ---
+  // FIM
 
-  // --- ESTILOS DE TEXTO E BOTÃO ---
+  // ESTILOS
   title: {
     fontFamily: "Outfit_400Regular",
     fontSize: 40,
@@ -271,7 +269,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     zIndex: 2,
   },
-  // --- ESTILOS DA MEDALHA ---
+  // ESTILOS DA MEDALHA
   medalContainer: {
     width: 198,
     height: 198,

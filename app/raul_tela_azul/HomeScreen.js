@@ -22,7 +22,6 @@ import { useRouter } from "expo-router";
 import ShareModal from "../../components/raul_components/ShareModal";
 
 export default function HomeScreen() {
-  // --- 3. INICIAR O ROUTER ---
   const router = useRouter();
 
   const [isModalVisible, setIsModalVisible] = React.useState(false);
@@ -50,7 +49,6 @@ export default function HomeScreen() {
         <ScrollView style={{ flex: 1 }}>
           {/* --- CABEÇALHO --- */}
           <View style={styles.header}>
-            {/* --- 4.  router.back() --- */}
             <TouchableOpacity onPress={() => router.back()}>
               <Ionicons name="chevron-back" size={28} color="white" />
             </TouchableOpacity>
@@ -61,7 +59,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
 
-          {/* --- Seção do Avatar e Título --- */}
+          {/*Seção do Avatar e Título */}
           <View style={styles.titleSection}>
             <View style={styles.avatarCircle}>
               <LinearGradient
@@ -77,14 +75,13 @@ export default function HomeScreen() {
             <Text style={styles.title}>Masterizando as Conversas Diárias</Text>
           </View>
 
-          {/* --- Bloco Escuro --- */}
           <LinearGradient
             colors={["#004196", "#00054D"]}
             start={{ x: 0.75, y: 0 }}
             end={{ x: 0.25, y: 1 }}
             style={styles.contentContainer}
           >
-            {/* --- Seção dos 3 Cards--- */}
+            {/* Seção dos 3 Cards */}
             <View style={styles.statsContainer}>
               {/* Card 1 */}
               <View
@@ -139,17 +136,17 @@ export default function HomeScreen() {
               </View>
             </View>
 
-            {/* --- Texto de Descrição --- */}
+            {/*  Texto de Descrição  */}
             <Text style={styles.descriptionText}>
               Melhore a sua habilidade de comunicação diária com atividades
               práticas e quizes interativos. Masterize frases comuns e melhore a
               pronúncia
             </Text>
 
-            {/* --- Título "Atividades" --- */}
+            {/* Título "Atividades" */}
             <Text style={styles.sectionTitle}>Atividades</Text>
 
-            {/* --- Card da Atividade  --- */}
+            {/*  Card da Atividade   */}
             <TouchableOpacity style={styles.activityCard}>
               <View style={styles.activityLeft}>
                 <Image
@@ -171,7 +168,7 @@ export default function HomeScreen() {
               </View>
             </TouchableOpacity>
 
-            {/* --- Botões do Rodapé  --- */}
+            {/*Botões do Rodapé   */}
             <View style={styles.footerButtonContainer}>
               <TouchableOpacity style={styles.bookmarkButton}>
                 <Image
@@ -179,7 +176,7 @@ export default function HomeScreen() {
                   style={styles.bookmarkIcon}
                 />
               </TouchableOpacity>
-              {/* --- 5. MUDADO PARA router.push() --- */}
+
               <TouchableOpacity
                 style={styles.startButton}
                 onPress={() => router.push("./ActivityScreen")}

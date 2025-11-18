@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
+// --- 1. IMPORTAR O ROUTER ---
 import {
   Outfit_300Light,
   Outfit_400Regular,
@@ -17,6 +17,7 @@ import {
 } from "@expo-google-fonts/outfit";
 import { useRouter } from "expo-router";
 
+// --- 2. REMOVER O "{ navigation }" ---
 export default function ActivityScreen() {
   // --- 3. INICIAR O ROUTER ---
   const router = useRouter();
@@ -53,10 +54,10 @@ export default function ActivityScreen() {
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
         >
-          {/* --- 4. router.back() --- */}
+          {/* --- 4. MUDADO PARA router.back() --- */}
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={() => router.back()} // <-- CORREÇÃO AQUI
           >
             <Ionicons name="chevron-back" size={28} color="white" />
           </TouchableOpacity>
@@ -65,7 +66,6 @@ export default function ActivityScreen() {
         <ScrollView contentContainerStyle={styles.scrollContent}>
           {/* Card Ciano  */}
           <View style={styles.cardCyan}>
-            {/* ... (gradientes internos do card) ... */}
             <LinearGradient
               colors={["#00A3CB", "transparent"]}
               start={{ x: 0.5, y: 0 }}
@@ -89,12 +89,11 @@ export default function ActivityScreen() {
 
           {/* Botão "Próximo passo"  */}
           <View style={styles.bottomBar}>
-            {/* --- 5. router.push() --- */}
+            {/* --- 5. MUDADO PARA router.push() --- */}
             <TouchableOpacity
               style={styles.nextButton}
-              onPress={() => router.push("./QuizScreen")}
+              onPress={() => router.push("./QuizScreen")} // <-- CORREÇÃO AQUI
             >
-              {/* ... (gradiente do botão com sombras internas) ... */}
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}
                 start={{ x: 0, y: 0.5 }}
@@ -152,7 +151,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   scrollContent: {
     padding: 20,
     paddingBottom: 40,

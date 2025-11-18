@@ -33,7 +33,7 @@ export default function ShareModal({ visible, onClose }) {
       visible={visible}
       onRequestClose={onClose}
     >
-      <BlurView intensity={50} tint="dark" style={StyleSheet.absoluteFill}>
+      <BlurView intensity={80} tint="dark" style={StyleSheet.absoluteFill}>
         <View style={styles.centeredView}>
           <View style={styles.modalContentContainer}>
             {/* --- Card 1 (Escuro, Fundo) --- */}
@@ -53,29 +53,45 @@ export default function ShareModal({ visible, onClose }) {
                 Compartilhe com os seus amigos e familiares
               </Text>
 
-              {/* Círculos de compartilhamento */}
+              {/*COMPARTILHAMENTO (PNGs Integrados)*/}
               <View style={styles.shareButtonsContainer}>
-                <TouchableOpacity
-                  style={[styles.circleButton, { backgroundColor: "#0CED04" }]}
-                />
-                <TouchableOpacity
-                  style={[styles.circleButton, { backgroundColor: "#EF4499" }]}
-                />
-                <TouchableOpacity
-                  style={[styles.circleButton, { backgroundColor: "#E40F2F" }]}
-                />
-                <TouchableOpacity
-                  style={[styles.circleButton, { backgroundColor: "#FFFFFF" }]}
-                />
+                {/* WhatsApp */}
+                <TouchableOpacity style={styles.iconButtonWrapper}>
+                  <Image
+                    source={require("@/assets/raul_assets/icone_zap_share.png")}
+                    style={styles.socialIcon}
+                  />
+                </TouchableOpacity>
+                {/* Instagram */}
+                <TouchableOpacity style={styles.iconButtonWrapper}>
+                  <Image
+                    source={require("@/assets/raul_assets/icone_instagram_share.png")}
+                    style={styles.socialIcon}
+                  />
+                </TouchableOpacity>
+                {/* TikTok */}
+                <TouchableOpacity style={styles.iconButtonWrapper}>
+                  <Image
+                    source={require("@/assets/raul_assets/icone_tiktok_share.png")}
+                    style={styles.socialIcon}
+                  />
+                </TouchableOpacity>
+                {/* Facebook */}
+                <TouchableOpacity style={styles.iconButtonWrapper}>
+                  <Image
+                    source={require("@/assets/raul_assets/icone_facebook_share.png")}
+                    style={styles.socialIcon}
+                  />
+                </TouchableOpacity>
               </View>
             </LinearGradient>
 
             <Image
-              source={require("@/assets/raul_assets/pentagono.png")} // <-- MUDADO
+              source={require("@/assets/raul_assets/pentagono.png")}
               style={styles.pentagonImage}
             />
 
-            {/* --- Botão "Voltar" (Abaixo de tudo) --- */}
+            {/* --- Botão Voltar*/}
             <TouchableOpacity style={styles.backButton} onPress={onClose}>
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}
@@ -93,6 +109,7 @@ export default function ShareModal({ visible, onClose }) {
   );
 }
 
+//  ESTILOS
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
@@ -131,6 +148,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     top: 90,
+    zIndex: 2,
   },
   pentagonImage: {
     width: 140,
@@ -161,6 +179,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 0,
   },
+
+  socialIcon: {
+    width: 71,
+    height: 71,
+    resizeMode: "contain",
+    marginTop: 20,
+    marginLeft: 25,
+  },
+  iconButtonWrapper: {
+    width: 45,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   circleButton: {
     width: 41,
     height: 41,

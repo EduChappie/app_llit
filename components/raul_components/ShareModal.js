@@ -34,14 +34,13 @@ export default function ShareModal({ visible, onClose }) {
       onRequestClose={onClose}
     >
       <BlurView intensity={80} tint="dark" style={StyleSheet.absoluteFill}>
+        {/* ... (O restante do código do modal) ... */}
         <View style={styles.centeredView}>
           <View style={styles.modalContentContainer}>
-            {/* Card 1  */}
             <View style={styles.card1}>
               <Text style={styles.card1Text}>Suas atividades</Text>
             </View>
 
-            {/*Card 2*/}
             <LinearGradient
               colors={["#FFC72C", "#FF9F00"]}
               start={{ x: 0, y: 0 }}
@@ -53,7 +52,7 @@ export default function ShareModal({ visible, onClose }) {
                 Compartilhe com os seus amigos e familiares
               </Text>
 
-              {/*COMPARTILHAMENTO*/}
+              {/* COMPARTILHAMENTO (PNGs Integrados) */}
               <View style={styles.shareButtonsContainer}>
                 {/* WhatsApp */}
                 <TouchableOpacity style={styles.iconButtonWrapper}>
@@ -91,7 +90,6 @@ export default function ShareModal({ visible, onClose }) {
               style={styles.pentagonImage}
             />
 
-            {/*Botão Voltar*/}
             <TouchableOpacity style={styles.backButton} onPress={onClose}>
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}
@@ -109,7 +107,6 @@ export default function ShareModal({ visible, onClose }) {
   );
 }
 
-//  ESTILOS
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
@@ -179,13 +176,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 0,
   },
-
   socialIcon: {
-    width: 71,
-    height: 71,
+    width: 41,
+    height: 41,
     resizeMode: "contain",
-    marginTop: 20,
-    marginLeft: 25,
   },
   iconButtonWrapper: {
     width: 45,
@@ -193,7 +187,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   circleButton: {
     width: 41,
     height: 41,

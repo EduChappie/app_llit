@@ -1,21 +1,22 @@
-// App.js
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import HomeScreen from "./HomeScreen";
-import ActivityScreen from "./ActivityScreen";
-import QuizScreen from "./QuizScreen";
-import CompletionScreen from "./CompletionScreen";
+// App.js (Versão Final e Corrigida)
 
 import {
-  useFonts,
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_700Bold,
+  useFonts,
 } from "@expo-google-fonts/outfit";
+import { Slot } from "expo-router"; // <-- NOVO: Importamos o Slot
+import { StyleSheet, Text, View } from "react-native";
 
-const Stack = createNativeStackNavigator();
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#00254D",
+  },
+});
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -25,37 +26,17 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return null;
+    // Retorna uma tela de carregamento simples enquanto as fontes carregam
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={{ color: "white", fontFamily: "Outfit_400Regular" }}>
+          Carregando Fontes...
+        </Text>
+      </View>
+    );
   }
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {/* A sua tela principal. O 'headerShown: false' esconde o cabeçalho DUPLO */}
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Activity"
-          component={ActivityScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Quiz"
-          component={QuizScreen}
-          options={{ headerShown: false }}
-        />
-
-        <Stack.Screen
-          name="Completion"
-          component={CompletionScreen}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  // A SOLUÇÃO FINAL: Retornamos <Slot />, que diz ao Expo Router para
+  // renderizar o conteúdo da rota inicial (index.tsx do seu colega).
+  return <Slot />;
 }

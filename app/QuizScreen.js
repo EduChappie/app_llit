@@ -21,7 +21,6 @@ import { Video } from "expo-av";
 import { useState } from "react";
 
 // carregamento foto llit
-import llia from "../../assets/home/llit_mascote.png";
 
 //DADOS REAIS DO QUIZ
 const QUESTIONS = [

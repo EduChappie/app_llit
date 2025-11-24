@@ -3,13 +3,34 @@ import { StyleSheet } from "react-native";
 const emblemaStyle = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fffdea",
+        backgroundColor: "rgba(0, 0, 0, 0)",
         alignItems: "center",
         justifyContent: "center",
         padding: 16,
+
+        /*
+        .frame .div {
+                background: radial-gradient(
+                    50% 50% at 76% 56%,
+                    rgba(255, 247, 188, 1) 0%,
+                    rgba(255, 190, 11, 1) 100%
+                );
+                height: 462px;
+                width: 298px;
+            } */
+
     },
     card: {
-        width: "100%",
+        width: 298,
+        height: 462,
+
+        /*
+        align-items: start;
+        background-color: transparent;
+        display: grid;
+        justify-items: center;
+        width: 100vw;*/
+
         maxWidth: 420,
         borderRadius: 28,
         paddingVertical: 28,
@@ -211,6 +232,26 @@ const emblemaStyle = StyleSheet.create({
         color: "#7a6b3a",
         textAlign: "center",
     },
+
+    /*
+.frame {
+  align-items: start;
+  background-color: transparent;
+  display: grid;
+  justify-items: center;
+  width: 100vw;
+}
+
+.frame .div {
+  background: radial-gradient(
+    50% 50% at 76% 56%,
+    rgba(255, 247, 188, 1) 0%,
+    rgba(255, 190, 11, 1) 100%
+  );
+  height: 462px;
+  width: 298px;
+}
+    */
 });
 
 export default emblemaStyle;

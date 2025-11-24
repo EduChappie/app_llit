@@ -49,7 +49,7 @@ export default function EmblemaVerde() {
             <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
             <LinearGradient
                 // fundo geral com canto arredondado similar ao design
-                colors={["#fffbe8", "#ffd24a"]}
+                colors={["rgba(255, 247, 188, 1)", "rgba(255, 190, 11, 1)"]}
                 style={emblemaStyle.card}
             >
                 <Text style={emblemaStyle.title}>Busy Bee</Text>

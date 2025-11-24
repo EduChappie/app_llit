@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#007aff',
         borderRadius: 20,
         position: 'relative',
+        overflow: 'hidden',
         padding: 20,
         width: '50%', // Ajusta a largura para metade da tela com espaçamento
         height: 150,
@@ -178,9 +179,9 @@ export default function Index() {
     const rout = useRouter();
 
     const popularData = [
-        { id: '1', color: '#6a1b9a' },
-        { id: '2', color: '#c2185b' },
-        { id: '3', color: '#b71c1c' },
+        { id: '1', color: 'rgba(56, 236, 95, 1)' },
+        { id: '2', color: 'rgba(236, 56, 179, 1)' },
+        { id: '3', color: 'rgba(251, 171, 0, 1)' },
         { id: '4', color: '#4527a0' },
     ];
 
@@ -233,13 +234,13 @@ export default function Index() {
         {/* Seção Conversas Diárias */}
         <View style={styles.dailyConversationsContainer}>
             <ScrollView horizontal showsHorizontalScrollIndicator={true} style={styles.popularScroll}>
-                <View style={styles.dailyConversationsCard}>
-                <View>
-                    <Text style={styles.dailyConversationsTitle}>Conversas Diárias</Text>
-                    <Text style={styles.dailyConversationsRating}>★ 5.0</Text>
-                    <Image style={styles.mascote} source={require('@/assets/eduardo_assets/llit_mascote.png')} />
-                </View>
-                </View>
+                <TouchableOpacity style={styles.dailyConversationsCard} onPress={() => rout.push('/HomeScreen')}>
+        <View>
+        <Text style={styles.dailyConversationsTitle}>Conversas Diárias</Text>
+        <Text style={styles.dailyConversationsRating}>★ 5.0</Text>
+        <Image style={styles.mascote} source={require('@/assets/eduardo_assets/llit_mascote.png')} />
+    </View>
+</TouchableOpacity>
             {/* Card vazio para alinhamento */}
                 
                 <View style={styles.emptyCard} />

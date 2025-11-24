@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  Image,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -18,6 +19,9 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { Video } from "expo-av";
 import { useState } from "react";
+
+// carregamento foto llit
+import llia from "../../assets/home/llit_mascote.png";
 
 //DADOS REAIS DO QUIZ
 const QUESTIONS = [
@@ -354,6 +358,7 @@ export default function QuizScreen() {
               resizeMode="contain"
               isLooping
             />
+            
           </View>
 
           {/* 4. Opções de Resposta */}

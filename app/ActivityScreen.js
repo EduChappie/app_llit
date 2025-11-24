@@ -18,7 +18,6 @@ import {
 import { useRouter } from "expo-router";
 
 export default function ActivityScreen() {
-  // --- 3. INICIAR O ROUTER ---
   const router = useRouter();
 
   let [fontsLoaded] = useFonts({
@@ -53,7 +52,6 @@ export default function ActivityScreen() {
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
         >
-          {/* --- 4. router.back() --- */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => router.back()}
@@ -63,9 +61,7 @@ export default function ActivityScreen() {
         </LinearGradient>
 
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          {/* Card Ciano  */}
           <View style={styles.cardCyan}>
-            {/* ... (gradientes internos do card) ... */}
             <LinearGradient
               colors={["#00A3CB", "transparent"]}
               start={{ x: 0.5, y: 0 }}
@@ -84,17 +80,14 @@ export default function ActivityScreen() {
             />
           </View>
 
-          {/* Card Branco */}
           <View style={styles.cardWhite} />
 
           {/* Botão "Próximo passo"  */}
           <View style={styles.bottomBar}>
-            {/* --- 5. router.push() --- */}
             <TouchableOpacity
               style={styles.nextButton}
               onPress={() => router.push("./QuizScreen")}
             >
-              {/* ... (gradiente do botão com sombras internas) ... */}
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}
                 start={{ x: 0, y: 0.5 }}
@@ -152,7 +145,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   scrollContent: {
     padding: 20,
     paddingBottom: 40,

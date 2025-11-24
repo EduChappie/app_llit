@@ -22,7 +22,6 @@ const emblemaStyle = StyleSheet.create({
     },
     card: {
         width: 298,
-        height: 462,
 
         /*
         align-items: start;

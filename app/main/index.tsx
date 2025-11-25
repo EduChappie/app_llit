@@ -241,7 +241,7 @@ export default function Index() {
 
                 <View style={styles.dailyConversationsContainer}>
                     <ScrollView horizontal showsHorizontalScrollIndicator={true} style={styles.popularScroll}>
-                        <TouchableOpacity style={styles.dailyConversationsCard} onPress={() => rout.push('/HomeScreen')}>
+                        <TouchableOpacity style={styles.dailyConversationsCard} onPress={() => rout.push('/main/HomeScreen')}>
                             <View>
                                 <Text style={styles.dailyConversationsTitle}>Conversas Diárias</Text>
                                 <Text style={styles.dailyConversationsRating}>★ 5.0</Text>

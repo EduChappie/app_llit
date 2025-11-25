@@ -9,11 +9,11 @@ const WelcomeScreen2 = () => {
             <Text style={styles.voltarButtonText}>‹</Text>
   </TouchableOpacity>
       <Image 
-        source={require('../../assets/fotos/BIXO.png')} 
+        source={require('../assets/fotos/BIXO.png')} 
         style={styles.mascote}
       />
       <Image 
-        source={require('../../assets/fotos/LLIAlogo.png')} 
+        source={require('../assets/fotos/LLIAlogo.png')} 
         style={styles.logo}
       />
 
@@ -32,7 +32,7 @@ const WelcomeScreen2 = () => {
         <TouchableOpacity
           style={styles.botao}
           // Ao clicar, vai para a próxima tela: a de criar usuário
-          onPress={() => router.push('/login/createUser')} 
+          onPress={() => router.push('/createUser')} 
         >
           <Text style={styles.textobotao}>Vamos começar!</Text>
         </TouchableOpacity>

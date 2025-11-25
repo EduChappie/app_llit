@@ -63,30 +63,30 @@ export default function App() {
 
       <Stack.Navigator initialRouteName="Index">
         <Stack.Screen
-          name="Index"
-          component={Index}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Activity"
-          component={ActivityScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Quiz"
-          component={QuizScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Completion"
-          component={CompletionScreen}
-          options={{ headerShown: false }}
-        />
+                  name="Index"
+                  component={Index}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Home"
+                  component={HomeScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Activity"
+                  component={ActivityScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Quiz"
+                  component={QuizScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="Completion"
+                  component={CompletionScreen}
+                  options={{ headerShown: false }}
+                />
       </Stack.Navigator>
     </NavigationContainer>
   );

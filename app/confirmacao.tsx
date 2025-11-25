@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import React from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const mascoteCheck = require('../../assets/fotos/BIXO.png'); 
+const mascoteCheck = require('../assets/fotos/BIXO.png'); 
 
 export default function ConfirmacaoScreen() {
   return (
@@ -12,7 +12,7 @@ export default function ConfirmacaoScreen() {
         <TouchableOpacity onPress={() => router.back()}>
           <Text style={styles.navText}>{"< Voltar"}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/login')}>
+        <TouchableOpacity onPress={() => router.push('/')}>
           <Text style={styles.navText}>X</Text>
         </TouchableOpacity>
       </View>
@@ -40,7 +40,7 @@ export default function ConfirmacaoScreen() {
       {/* Botão de Iniciar Jornada */}
       <TouchableOpacity 
         style={styles.proceedButton} 
-        onPress={() => router.push('/')}  /*depois mudar para => router.push('/nome do arquivo da tela do mano')
+        onPress={() => router.push('/main')}  /*depois mudar para => router.push('/nome do arquivo da tela do mano')
         Eduardo: Esse cara é foda, deixou tudo comentadinho esse cara é top*/
       >
         <Text style={styles.proceedButtonText}>Iniciar Jornada</Text>

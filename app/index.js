@@ -6,12 +6,12 @@ const PrimeiraTela = () => {
   return (
     <View style={styles.container}>
       <Image 
-        source={require('../../assets/fotos/BIXO.png')} 
+        source={require('../assets/fotos/BIXO.png')} 
         style={styles.mascote}
       />
       <Image 
 
-        source={require('../../assets/fotos/LLIAlogo.png')} 
+        source={require('../assets/fotos/LLIAlogo.png')} 
         style={styles.logo}
       />
 
@@ -28,7 +28,7 @@ const PrimeiraTela = () => {
         
         <TouchableOpacity
           style={styles.botao}
-          onPress={() => router.push('/login/welcome2')} 
+          onPress={() => router.push('/welcome2')} 
         >
           <Text style={styles.textobotao}>Continuar</Text>
         </TouchableOpacity>

@@ -86,7 +86,7 @@ export default function ActivityScreen() {
           <View style={styles.bottomBar}>
             <TouchableOpacity
               style={styles.nextButton}
-              onPress={() => router.push("./QuizScreen")}
+              onPress={() => router.push("/main/QuizScreen")}
             >
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}

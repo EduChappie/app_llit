@@ -19,7 +19,7 @@ import {
 
 import { useRouter } from "expo-router";
 
-import ShareModal from "../components/raul_components/ShareModal";
+import ShareModal from "../../components/raul_components/ShareModal";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -179,7 +179,7 @@ export default function HomeScreen() {
 
               <TouchableOpacity
                 style={styles.startButton}
-                onPress={() => router.push("./ActivityScreen")}
+                onPress={() => router.push("/main/ActivityScreen")}
               >
                 <LinearGradient
                   colors={["#FFBE0B", "#FB7907"]}

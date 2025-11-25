@@ -266,7 +266,7 @@ export default function CompletionScreen() {
           <View style={styles.bottomBar}>
             <TouchableOpacity
               style={styles.actionButton}
-              onPress={() => router.replace("/")} // Volta para a Home
+              onPress={() => router.replace("/main")} // Volta para a Home
             >
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}

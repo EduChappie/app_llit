@@ -13,9 +13,6 @@ import {
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// ===============================================================
-// FUNÇÃO CORRETA PARA SALVAR O NOME E O AVATAR
-// ===============================================================
 const salvarDados = async (nome, avatar) => {
   try {
     const dadosUsuario = {
@@ -36,10 +33,10 @@ const salvarDados = async (nome, avatar) => {
 // AVATARES
 // ===============================================================
 const AVATARES = [
-  { id: '5', type: 'image', value: require('../../assets/fotos/bixo1.png') },
-  { id: '6', type: 'image', value: require('../../assets/fotos/bixo2.png') },
-  { id: '7', type: 'image', value: require('../../assets/fotos/bixo3.png') },
-  { id: '8', type: 'image', value: require('../../assets/fotos/bixa2.png') },
+  { id: '5', type: 'image', value: require('../assets/fotos/bixo1.png') },
+  { id: '6', type: 'image', value: require('../assets/fotos/bixo2.png') },
+  { id: '7', type: 'image', value: require('../assets/fotos/bixo3.png') },
+  { id: '8', type: 'image', value: require('../assets/fotos/bixa2.png') },
 ];
 
 const CreateUserScreen = () => {
@@ -61,7 +58,7 @@ const CreateUserScreen = () => {
         <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
           <Text style={styles.backButtonText}>{"< Voltar"}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.closeButton} onPress={() => router.push('/login')}>
+        <TouchableOpacity style={styles.closeButton} onPress={() => router.push('/')}>
           <Text style={styles.closeButtonText}>X</Text>
         </TouchableOpacity>
       </View>
@@ -78,7 +75,7 @@ const CreateUserScreen = () => {
 
       {/* --- IMAGEM CENTRAL --- */}
       <Image
-        source={require('../../assets/fotos/BIXO.png')}
+        source={require('../assets/fotos/BIXO.png')}
         style={styles.mascote}
       />
 
@@ -130,7 +127,7 @@ const CreateUserScreen = () => {
         style={styles.proceedButton}
         onPress={async () => {
           await salvarDados(nome, avatarSelecionado);
-          router.push('/login/confirmacao');
+          router.push('/confirmacao');
         }}
       >
         <Text style={styles.proceedButtonText}>Prosseguir</Text>

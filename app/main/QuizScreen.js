@@ -276,7 +276,7 @@ export default function QuizScreen() {
         setIsAnswerSubmitted(false);
       } else {
         router.push({
-          pathname: "./CompletionScreen",
+          pathname: "/main/CompletionScreen",
           params: { score: score, total: QUESTIONS.length },
         });
       }

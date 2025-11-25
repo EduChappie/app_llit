@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function Index() {
+export default function screenNotFound() {
 
     const rout = useRouter();
 
@@ -196,17 +196,11 @@ export default function Index() {
         getUser();
     }, []);
 
-    const popularData = [
-        { id: '1', color: 'rgba(56, 236, 95, 1)' },
-        { id: '2', color: 'rgba(236, 56, 179, 1)' },
-        { id: '3', color: 'rgba(251, 171, 0, 1)' },
-        { id: '4', color: '#4527a0' },
-    ];
-
     return (
         <SafeAreaView style={styles.safeArea}>
             <ScrollView style={styles.container}>
 
+                {/* Cabeçalho de perfil */}
                 <View style={styles.header}>
                     <Image source={require('@/assets/eduardo_assets/barra-de-menu.png')} style={styles.icon} />
                     <View style={styles.userInfo}>
@@ -214,66 +208,22 @@ export default function Index() {
                             <Text style={styles.level}>Lvl 14</Text>
                             <Text style={styles.xp}>546XP p/prox nível</Text>
                         </View>
-                        <TouchableOpacity onPress={() => { rout.push('/main/errorScreen')}}>
-                            <Image source={require('@/assets/eduardo_assets/avatar.png')} style={styles.avatar} />
-                        </TouchableOpacity>
+                        <Image source={require('@/assets/eduardo_assets/avatar.png')} style={styles.avatar} />
                     </View>
                 </View>
 
-                <Text style={styles.greeting}>Olá, {user ? user : "Guest..."}</Text>
-                <Text style={styles.subtitle}>Explore as tarefas mais interessantes do dia!</Text>
+                <Text style={styles.greeting}>Desculpe, {user ? user : "Guest..."}</Text>
+                <Text style={styles.subtitle}>Página inexistente, prevista para próximas atualizações!</Text>
 
-                <TouchableOpacity style={styles.dailyMissionsCard}>
+                {/* Página de erro para telas inexistentes */}
+                <View style={styles.dailyMissionsCard}>
                     <View style={styles.dailyMissionsTextContainer}>
-                        <Text style={styles.dailyMissionsTitle}>Missões Diárias</Text>
-                        <Text style={styles.dailyMissionsText}>Conclua suas missões antes de 12:00h</Text>
+                        <Text style={styles.dailyMissionsTitle}>Página não encontrada</Text>
+                        <Text style={styles.dailyMissionsText}>Sentimos muito pelo transtorno, mas em breve teremos atualizações futuras de implementação das telas.</Text>
                     </View>
-                    <Image source={require('@/assets/eduardo_assets/3d_modelo.png')} style={styles.dailyMissionsImage} />
-                </TouchableOpacity>
-
-                <View style={styles.sectionHeader}>
-                    <Text style={styles.sectionTitle}>Atividades LTM</Text>
-                    <View style={styles.buttonRow}>
-                        <TouchableOpacity style={styles.viewAllButton}
-                            onPress={() => rout.push('/main/errorScreen')}
-                        >
-                            <Text style={styles.viewAllButtonText}>Visualizar tudo</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.arrowButton} />
-                    </View>
+                    <Image source={require('@/assets/fotos/bixo2.png')} style={styles.dailyMissionsImage} />
                 </View>
 
-                <View style={styles.dailyConversationsContainer}>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={true} style={styles.popularScroll}>
-                        <TouchableOpacity style={styles.dailyConversationsCard} onPress={() => rout.push('/main/HomeScreen')}>
-                            <View>
-                                <Text style={styles.dailyConversationsTitle}>Conversas Diárias</Text>
-                                <Text style={styles.dailyConversationsRating}>★ 5.0</Text>
-                                <Image style={styles.mascote} source={require('@/assets/eduardo_assets/llit_mascote.png')} />
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => rout.push('/main/errorScreen')} style={styles.emptyCard} />
-                        <TouchableOpacity onPress={() => rout.push('/main/errorScreen')} style={styles.emptyCard} />
-                    </ScrollView>
-                </View>
-
-                <View style={styles.sectionHeader}>
-                    <Text style={styles.sectionTitle}>Popular</Text>
-                    <View style={styles.buttonRow}>
-                        <TouchableOpacity style={styles.viewAllButton}>
-                            <Text style={styles.viewAllButtonText}>Visualizar tudo</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.arrowButton} />
-                    </View>
-                </View>
-
-                <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.popularScroll}>
-                    {popularData.map(item => (
-                        <TouchableOpacity key={item.id} onPress={() => rout.push('/main/errorScreen')} style={[styles.popularCard, { backgroundColor: item.color }]} />
-                    ))}
-                </ScrollView>
-
-                <EmblemaVerde />
 
             </ScrollView>
         </SafeAreaView>

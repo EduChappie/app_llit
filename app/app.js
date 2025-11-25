@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Index from "./index";
 
+// Joguinho
 import HomeScreen from "./HomeScreen";
 import ActivityScreen from "./ActivityScreen";
 import QuizScreen from "./QuizScreen";

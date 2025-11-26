@@ -62,11 +62,9 @@ export default function HomeScreen() {
           {/*Seção do Avatar e Título */}
           <View style={styles.titleSection}>
             <View style={styles.avatarCircle}>
-              <LinearGradient
-                colors={["rgba(0,0,0,0.25)", "transparent"]}
-                start={{ x: 0.5, y: 0 }}
-                end={{ x: 0.5, y: 0.1 }}
-                style={styles.innerShadowGradient}
+              <Image
+                source={require("@/assets/raul_assets/foto_perfil.png")}
+                style={styles.avatarImage}
               />
             </View>
             <View style={styles.tag}>
@@ -223,6 +221,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     overflow: "hidden",
   },
+
+  avatarImage: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover", // Garante que a foto preencha o círculo
+  },
+
   innerShadowGradient: { width: "100%", height: "100%" },
   tag: {
     backgroundColor: "#ffc107",

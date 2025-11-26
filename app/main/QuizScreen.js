@@ -1,5 +1,14 @@
+import {
+  Outfit_300Light,
+  Outfit_400Regular,
+  Outfit_700Bold,
+  useFonts,
+} from "@expo-google-fonts/outfit";
+import { Ionicons } from "@expo/vector-icons";
+import { ResizeMode, Video } from "expo-av";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -9,26 +18,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-//Para o botão de voltar
-import {
-  Outfit_300Light,
-  Outfit_400Regular,
-  Outfit_700Bold,
-  useFonts,
-} from "@expo-google-fonts/outfit";
-import { Ionicons } from "@expo/vector-icons";
-import { Video } from "expo-av";
-import { useState } from "react";
 
-// carregamento foto llit
-
-//DADOS REAIS DO QUIZ
 const QUESTIONS = [
   {
     id: 1,
-    question: "Qual o sinal de LIBRAS para 'Olá'?",
+
     correctAnswer: "opcaoA",
-    videoUrl: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+    videoUrl: require("@/assets/raul_assets/ola_libras_video.mp4"),
     options: [
       { id: "opcaoA", text: "Olá!" },
       { id: "opcaoB", text: "Meu nome é..." },
@@ -38,9 +34,9 @@ const QUESTIONS = [
   },
   {
     id: 2,
-    question: "Qual o sinal de LIBRAS para 'Meu nome é...'?",
+
     correctAnswer: "opcaoD",
-    videoUrl: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+    videoUrl: require("@/assets/raul_assets/MeuNomeE_libras_video.mp4"),
     options: [
       { id: "opcaoA", text: "Eu não entendi" },
       { id: "opcaoB", text: "Prazer!" },
@@ -50,19 +46,17 @@ const QUESTIONS = [
   },
   {
     id: 3,
-    question: "Qual o sinal de LIBRAS para 'Prazer!'?",
+
     correctAnswer: "opcaoB",
-    videoUrl: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+    videoUrl: require("@/assets/raul_assets/prazerEmConhecelo_libras_video.mp4"),
     options: [
       { id: "opcaoA", text: "Obrigado!" },
-      { id: "opcaoB", text: "Prazer!" },
+      { id: "opcaoB", text: "Prazer em conhecê-lo" },
       { id: "opcaoC", text: "Como você está?" },
       { id: "opcaoD", text: "Até logo!" },
     ],
   },
 ];
-// FIM DOS DADOS
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -101,21 +95,24 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   questionCard: {
-    marginTop: 70,
-    width: 380,
-    height: 312,
-    borderRadius: 20,
-    backgroundColor: "#FFFFFF",
-    marginBottom: 30,
-    padding: 20,
-    justifyContent: "flex-start",
-    alignItems: "center",
+    marginTop: 50,
+    width: 405,
+    height: 229, 
+    borderRadius: 15,
+    backgroundColor: "#000000",
+    marginBottom: 20,
     overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 2,
+    borderColor: "white",
+    alignSelf: "center", // Centraliza o card na tela
   },
   videoPlayer: {
+    position: "relative",
     width: "100%",
-    height: 200,
-    marginTop: 10,
+    height: "100%",
+    backgroundColor: "#000000",
   },
   quizCounterText: {
     fontFamily: "Outfit_700Bold",
@@ -159,20 +156,20 @@ const styles = StyleSheet.create({
     borderColor: "#FFFFFF",
     borderWidth: 2,
     shadowColor: "#0A4189",
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.25,
-    shadowRadius: 19,
-    elevation: 10,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    elevation: 8,
   },
   optionButtonIncorrect: {
     backgroundColor: "#DF2929",
     borderColor: "#FFFFFF",
     borderWidth: 2,
     shadowColor: "#CB0000",
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.25,
-    shadowRadius: 19,
-    elevation: 10,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+    elevation: 8,
   },
 
   cardBackground: {
@@ -229,8 +226,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 1,
   },
-  nextButtonText: { color: "#FFFFFF", fontFamily: "Outfit_700Bold", zIndex: 2 },
+  nextButtonText: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontFamily: "Outfit_700Bold",
+    zIndex: 2,
+  },
 });
+// --- FIM DOS ESTILOS ---
 
 export default function QuizScreen() {
   const router = useRouter();
@@ -252,6 +255,7 @@ export default function QuizScreen() {
     return null;
   }
 
+  // --- FUNÇÕES DE LÓGICA ---
   const handleSelectAnswer = (id) => {
     if (!isAnswerSubmitted) {
       setSelectedAnswerId(id);
@@ -283,6 +287,7 @@ export default function QuizScreen() {
     }
   };
 
+  // 3. Lógica de Estilo Dinâmico (Mudar as Cores)
   const getCardStyle = (id) => {
     const isSelected = id === selectedAnswerId;
     const isCorrect = id === currentQuestion.correctAnswer;
@@ -311,6 +316,7 @@ export default function QuizScreen() {
     }
   };
 
+  // O que vai escrito no botão de rodapé
   let nextButtonText = "Enviar resposta";
   if (isAnswerSubmitted) {
     nextButtonText =
@@ -338,7 +344,7 @@ export default function QuizScreen() {
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
         >
-          {/* O Botão Voltar  */}
+          {/* --- Botão Voltar --- */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => router.back()}
@@ -351,14 +357,22 @@ export default function QuizScreen() {
           {/* 3. Card VÍDEO (Pergunta) */}
           <View style={styles.questionCard}>
             <Video
-              source={{ uri: currentQuestion.videoUrl }}
+              // --- CORREÇÃO DO VÍDEO TRAVADO ---
+              key={currentQuestion.id} // Isso força o vídeo a recarregar quando a pergunta muda
+              // ---------------------------------
+              source={currentQuestion.videoUrl}
               style={styles.videoPlayer}
               shouldPlay={true}
-              resizeMode="contain"
+              // --- CORREÇÃO DO VÍDEO CORTADO ---
+              resizeMode={ResizeMode.CONTAIN} // Usa CONTAIN para mostrar o vídeo inteiro
+              // ---------------------------------
               isLooping
+              useNativeControls={false}
             />
             
           </View>
+
+          <Text style={styles.questionText}>{currentQuestion.question}</Text>
 
           {/* 4. Opções de Resposta */}
           <View style={styles.optionsContainer}>

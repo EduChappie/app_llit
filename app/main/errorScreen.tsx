@@ -202,7 +202,9 @@ export default function screenNotFound() {
 
                 {/* Cabeçalho de perfil */}
                 <View style={styles.header}>
-                    <Image source={require('@/assets/eduardo_assets/barra-de-menu.png')} style={styles.icon} />
+                    <TouchableOpacity onPress={() => { rout.push('/main')}}>
+                        <Image source={require('@/assets/eduardo_assets/arrow.png')} style={styles.icon} />
+                    </TouchableOpacity>
                     <View style={styles.userInfo}>
                         <View style={styles.userStatus}>
                             <Text style={styles.level}>Lvl 14</Text>
@@ -218,8 +220,8 @@ export default function screenNotFound() {
                 {/* Página de erro para telas inexistentes */}
                 <View style={styles.dailyMissionsCard}>
                     <View style={styles.dailyMissionsTextContainer}>
-                        <Text style={styles.dailyMissionsTitle}>Página não encontrada</Text>
-                        <Text style={styles.dailyMissionsText}>Sentimos muito pelo transtorno, mas em breve teremos atualizações futuras de implementação das telas.</Text>
+                        <Text style={styles.dailyMissionsTitle}>Error 404</Text>
+                        <Text style={styles.dailyMissionsText}>Sentimos muito pelo transtorno, mas em breve teremos atualizações futuras de implementação de mais telas.</Text>
                     </View>
                     <Image source={require('@/assets/fotos/bixo2.png')} style={styles.dailyMissionsImage} />
                 </View>

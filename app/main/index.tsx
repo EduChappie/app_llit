@@ -208,7 +208,9 @@ export default function Index() {
             <ScrollView style={styles.container}>
 
                 <View style={styles.header}>
-                    <Image source={require('@/assets/eduardo_assets/barra-de-menu.png')} style={styles.icon} />
+                    <TouchableOpacity onPress={() => {rout.push('/main/errorScreen')}}>
+                        <Image source={require('@/assets/eduardo_assets/barra-de-menu.png')} style={styles.icon} />
+                    </TouchableOpacity>
                     <View style={styles.userInfo}>
                         <View style={styles.userStatus}>
                             <Text style={styles.level}>Lvl 14</Text>
@@ -223,7 +225,7 @@ export default function Index() {
                 <Text style={styles.greeting}>Olá, {user ? user : "Guest..."}</Text>
                 <Text style={styles.subtitle}>Explore as tarefas mais interessantes do dia!</Text>
 
-                <TouchableOpacity style={styles.dailyMissionsCard}>
+                <TouchableOpacity style={styles.dailyMissionsCard} onPress={() => { rout.push('/main/errorScreen') }}>
                     <View style={styles.dailyMissionsTextContainer}>
                         <Text style={styles.dailyMissionsTitle}>Missões Diárias</Text>
                         <Text style={styles.dailyMissionsText}>Conclua suas missões antes de 12:00h</Text>
@@ -239,7 +241,6 @@ export default function Index() {
                         >
                             <Text style={styles.viewAllButtonText}>Visualizar tudo</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.arrowButton} />
                     </View>
                 </View>
 
@@ -260,10 +261,11 @@ export default function Index() {
                 <View style={styles.sectionHeader}>
                     <Text style={styles.sectionTitle}>Popular</Text>
                     <View style={styles.buttonRow}>
-                        <TouchableOpacity style={styles.viewAllButton}>
+                        <TouchableOpacity style={styles.viewAllButton}
+                            onPress={() => rout.push('/main/errorScreen')}
+                        >
                             <Text style={styles.viewAllButtonText}>Visualizar tudo</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.arrowButton} />
                     </View>
                 </View>
 

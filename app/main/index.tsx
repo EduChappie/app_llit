@@ -5,6 +5,7 @@ const { width } = Dimensions.get('window');
 import { useRouter } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState, useEffect } from 'react';
+import { ImageBackground } from 'expo-image';
 
 const styles = StyleSheet.create({
     safeArea: {
@@ -150,8 +151,6 @@ const styles = StyleSheet.create({
         height: 80,
     },
     emptyCard: {
-        width: 120,
-        height: 150,
         backgroundColor: '#52b788',
         borderRadius: 20,
         marginLeft: 20,
@@ -197,10 +196,9 @@ export default function Index() {
     }, []);
 
     const popularData = [
-        { id: '1', color: 'rgba(56, 236, 95, 1)' },
-        { id: '2', color: 'rgba(236, 56, 179, 1)' },
-        { id: '3', color: 'rgba(251, 171, 0, 1)' },
-        { id: '4', color: '#4527a0' },
+        { id: '1', title: "Matemática\nBásica", img: require("@/assets/eduardo_assets/capa_math.png"), color: 'rgba(56, 236, 95, 1)' },
+        { id: '2', title: "Soletrando\nem LIBRAS", img: require("@/assets/eduardo_assets/capa_libras.png"), color: 'rgba(236, 56, 179, 1)' },
+        { id: '3', title: "Língua\nPortuguesa", img: require("@/assets/eduardo_assets/capa_portugues.png"), color: 'rgba(251, 171, 0, 1)' },
     ];
 
     return (
@@ -253,8 +251,34 @@ export default function Index() {
                                 <Image style={styles.mascote} source={require('@/assets/eduardo_assets/llit_mascote.png')} />
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => rout.push('/main/errorScreen')} style={styles.emptyCard} />
-                        <TouchableOpacity onPress={() => rout.push('/main/errorScreen')} style={styles.emptyCard} />
+
+                        <TouchableOpacity onPress={() => rout.push('/main/errorScreen')} style={[styles.emptyCard, {
+                            width: 300,
+                            height: 150
+                        }]}>
+                            <ImageBackground
+                                source={require("@/assets/eduardo_assets/capa_corrida.png")}
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                }}
+                                imageStyle={{
+                                    borderRadius: 20
+                                }}
+                            >
+                                <Text style={[
+                                    styles.dailyConversationsTitle,
+                                    {
+                                        marginTop: 25,
+                                        marginLeft: 20
+                                    }
+                                    ]}>
+                                    Corrida dos Gestos
+                                </Text>
+
+                            </ImageBackground>
+
+                        </TouchableOpacity>
                     </ScrollView>
                 </View>
 
@@ -271,10 +295,26 @@ export default function Index() {
 
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.popularScroll}>
                     {popularData.map(item => (
-                        <TouchableOpacity key={item.id} onPress={() => rout.push('/main/errorScreen')} style={[styles.popularCard, { backgroundColor: item.color }]} />
+                        <TouchableOpacity key={item.id} onPress={() => rout.push('/main/errorScreen')} style={[styles.popularCard, { backgroundColor: item.color }]} >
+                            <ImageBackground
+                                source={item.img}
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                }}
+                                imageStyle={{borderRadius: 20}}
+                            >
+                                <Text style={[styles.dailyConversationsTitle, {
+                                    marginLeft: 21,
+                                    marginTop: 5,
+                                }]}>
+                                    {item.title}
+                                </Text>
+                                
+                            </ImageBackground>
+                        </TouchableOpacity>
                     ))}
                 </ScrollView>
-
                 <EmblemaVerde />
 
             </ScrollView>

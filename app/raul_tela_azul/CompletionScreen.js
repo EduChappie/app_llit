@@ -229,9 +229,7 @@ export default function CompletionScreen() {
 
           {/* 4. Barra de Progresso (Com a frase do score) */}
           <View style={styles.scoreBarContainer}>
-            <Text
-              style={styles.scoreTextInsideBar}
-            >{`${score}/${total} acertos`}</Text>
+            <Text style={styles.scoreTextInsideBar}></Text>
             <View style={styles.progressBarWrapper}>
               <View
                 style={[

@@ -6,18 +6,16 @@ import {
 } from "@expo-google-fonts/outfit";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Image,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-
-import { useRouter } from "expo-router";
 
 import ShareModal from "../../components/raul_components/ShareModal";
 
@@ -46,20 +44,17 @@ export default function HomeScreen() {
       style={styles.container}
     >
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView style={{ flex: 1 }}>
-          {/* --- CABEÇALHO --- */}
+        <View style={{ flex: 1 }}>
           <View style={styles.header}>
             <TouchableOpacity onPress={() => router.back()}>
               <Ionicons name="chevron-back" size={28} color="white" />
             </TouchableOpacity>
             <Text style={styles.headerTitle}>Detalhes da atividade</Text>
-            {/* --- Botão de compartilhar  */}
             <TouchableOpacity onPress={openModal}>
               <Ionicons name="share-social-outline" size={24} color="white" />
             </TouchableOpacity>
           </View>
 
-          {/*Seção do Avatar e Título */}
           <View style={styles.titleSection}>
             <View style={styles.avatarCircle}>
               <Image
@@ -79,9 +74,7 @@ export default function HomeScreen() {
             end={{ x: 0.25, y: 1 }}
             style={styles.contentContainer}
           >
-            {/* Seção dos 3 Cards */}
             <View style={styles.statsContainer}>
-              {/* Card 1 */}
               <View
                 style={[
                   styles.statCardBase,
@@ -98,7 +91,6 @@ export default function HomeScreen() {
                 <Text style={styles.statNumber}>01</Text>
                 <Text style={styles.statLabel}>Atividades</Text>
               </View>
-              {/* Card 2 */}
               <View
                 style={[
                   styles.statCardBase,
@@ -115,7 +107,6 @@ export default function HomeScreen() {
                 <Text style={styles.statNumber}>03</Text>
                 <Text style={styles.statLabel}>Quizes</Text>
               </View>
-              {/* Card 3 */}
               <View
                 style={[
                   styles.statCardBase,
@@ -134,17 +125,14 @@ export default function HomeScreen() {
               </View>
             </View>
 
-            {/*  Texto de Descrição  */}
             <Text style={styles.descriptionText}>
               Melhore a sua habilidade de comunicação diária com atividades
               práticas e quizes interativos. Masterize frases comuns e melhore a
               pronúncia
             </Text>
 
-            {/* Título "Atividades" */}
             <Text style={styles.sectionTitle}>Atividades</Text>
 
-            {/*  Card da Atividade   */}
             <TouchableOpacity style={styles.activityCard}>
               <View style={styles.activityLeft}>
                 <Image
@@ -166,7 +154,8 @@ export default function HomeScreen() {
               </View>
             </TouchableOpacity>
 
-            {/*Botões do Rodapé   */}
+            <View style={{ flex: 1 }} />
+
             <View style={styles.footerButtonContainer}>
               <TouchableOpacity style={styles.bookmarkButton}>
                 <Image
@@ -174,7 +163,6 @@ export default function HomeScreen() {
                   style={styles.bookmarkIcon}
                 />
               </TouchableOpacity>
-
               <TouchableOpacity
                 style={styles.startButton}
                 onPress={() => router.push("./ActivityScreen")}
@@ -188,7 +176,7 @@ export default function HomeScreen() {
               </TouchableOpacity>
             </View>
           </LinearGradient>
-        </ScrollView>
+        </View>
       </SafeAreaView>
 
       <ShareModal visible={isModalVisible} onClose={closeModal} />
@@ -199,144 +187,138 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   safeArea: { flex: 1 },
+
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   headerTitle: { color: "white", fontSize: 16, fontFamily: "Outfit_700Bold" },
   titleSection: {
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 20,
     paddingHorizontal: 20,
   },
+
   avatarCircle: {
-    width: 148,
-    height: 148,
-    borderRadius: 74,
-    backgroundColor: "#f0f0f0",
-    marginBottom: 20,
+    width: 130,
+    height: 130,
+    borderRadius: 65,
+    marginBottom: 15,
     overflow: "hidden",
+    borderWidth: 2,
+    borderColor: "rgba(255,255,255,0.2)",
   },
-
-  avatarImage: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover", // Garante que a foto preencha o círculo
-  },
-
-  innerShadowGradient: { width: "100%", height: "100%" },
+  avatarImage: { width: "100%", height: "100%", resizeMode: "cover" },
   tag: {
     backgroundColor: "#ffc107",
-    paddingVertical: 6,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 18,
     borderRadius: 15,
-    marginBottom: 15,
+    marginBottom: 10,
   },
   tagText: { color: "#FFFFFF", fontFamily: "Outfit_700Bold", fontSize: 12 },
   title: {
     color: "white",
-    fontSize: 24,
+    fontSize: 22,
     fontFamily: "Outfit_400Regular",
     textAlign: "center",
-    maxWidth: 208,
+    maxWidth: 250,
   },
+
   contentContainer: {
     flex: 1,
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
     padding: 20,
     paddingTop: 24,
+    paddingBottom: 20,
   },
+
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 30,
+    marginBottom: 20,
   },
   statCardBase: {
-    width: 116,
-    height: 142,
-    borderRadius: 20,
+    width: 110,
+    height: 120,
+    borderRadius: 15,
     borderWidth: 1,
-    padding: 15,
+    padding: 10,
     alignItems: "flex-start",
+    justifyContent: "center",
   },
-  cardIcon: {
-    width: 24,
-    height: 24,
-    resizeMode: "contain",
-    marginBottom: 10,
-  },
+  cardIcon: { width: 22, height: 22, resizeMode: "contain", marginBottom: 8 },
   statNumber: {
     color: "white",
-    fontSize: 27,
+    fontSize: 24,
     fontFamily: "Outfit_400Regular",
-    marginTop: 10,
+    marginTop: 5,
   },
   statLabel: {
     color: "white",
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: "Outfit_300Light",
-    marginTop: 8,
+    marginTop: 4,
   },
+
   descriptionText: {
     color: "#D5DCFF",
-    fontSize: 16,
-    lineHeight: 16 * 1.25,
-    marginBottom: 30,
+    fontSize: 14,
+    lineHeight: 18,
+    marginBottom: 20,
     fontFamily: "Outfit_300Light",
   },
   sectionTitle: {
     color: "white",
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: "Outfit_400Regular",
-    marginBottom: 20,
+    marginBottom: 15,
   },
+
   activityCard: {
     backgroundColor: "#223078",
-    borderRadius: 20,
-    height: 65,
-    paddingHorizontal: 18,
+    borderRadius: 15,
+    height: 60,
+    paddingHorizontal: 15,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: 10,
   },
   activityLeft: { flexDirection: "row", alignItems: "center" },
   activityIcon: {
-    width: 20,
-    height: 20,
+    width: 18,
+    height: 18,
     resizeMode: "contain",
-    marginRight: 15,
+    marginRight: 12,
   },
   activityText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: "Outfit_400Regular",
   },
   activityDuration: {
     color: "#D5DCFF",
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: "Outfit_300Light",
   },
   activityCheckmark: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
     justifyContent: "center",
     alignItems: "center",
   },
-  checkmarkIcon: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
-  },
+  checkmarkIcon: { width: "100%", height: "100%", resizeMode: "contain" },
+
   footerButtonContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 20,
+    marginBottom: 45,
   },
   bookmarkButton: {
     width: 46,
@@ -345,11 +327,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  bookmarkIcon: {
-    width: "80%",
-    height: "80%",
-    resizeMode: "contain",
-  },
+  bookmarkIcon: { width: "80%", height: "80%", resizeMode: "contain" },
   startButton: { flex: 1, height: 46 },
   startButtonGradient: {
     width: "100%",

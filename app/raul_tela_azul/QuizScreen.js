@@ -5,21 +5,19 @@ import {
   useFonts,
 } from "@expo-google-fonts/outfit";
 import { Ionicons } from "@expo/vector-icons";
-// --- IMPORTANTE: Importar ResizeMode ---
+
 import { ResizeMode, Video } from "expo-av";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 
-// --- DADOS REAIS DO QUIZ ---
 const QUESTIONS = [
   {
     id: 1,
@@ -58,9 +56,7 @@ const QUESTIONS = [
     ],
   },
 ];
-// --- FIM DOS DADOS ---
 
-// --- ESTILOS ---
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -92,16 +88,16 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 5,
   },
-  scrollContent: {
+  fixedContent: {
+    flex: 1,
     padding: 20,
-    paddingBottom: 40,
     alignItems: "center",
-    backgroundColor: "transparent",
+    width: "100%",
   },
   questionCard: {
     marginTop: 50,
-    width: 405, // Largura fixa
-    height: 229, // <--- Altura reduzida (formato retangular)
+    width: 405,
+    height: 229,
     borderRadius: 15,
     backgroundColor: "#000000",
     marginBottom: 20,
@@ -110,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 2,
     borderColor: "white",
-    alignSelf: "center", // Centraliza o card na tela
+    alignSelf: "center",
   },
   videoPlayer: {
     position: "relative",
@@ -149,22 +145,34 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "transparent",
   },
-  optionButtonWhite: { backgroundColor: "#FFFFFF", borderColor: "transparent" },
-  optionButtonSelected: {
+
+  optionButtonWhite: {
     backgroundColor: "#FFFFFF",
-    borderColor: "#1E90FF",
-    borderWidth: 3,
+    borderColor: "transparent",
   },
-  optionButtonCorrect: {
-    backgroundColor: "#29DBDF",
+
+  optionButtonSelected: {
+    backgroundColor: "#1E90FF",
     borderColor: "#FFFFFF",
     borderWidth: 2,
-    shadowColor: "#0A4189",
+    shadowColor: "#0044AA",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 6,
+  },
+
+  optionButtonCorrect: {
+    backgroundColor: "#6cf77f",
+    borderColor: "#FFFFFF",
+    borderWidth: 2,
+    shadowColor: "#2E7D32",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 6,
     elevation: 8,
   },
+
   optionButtonIncorrect: {
     backgroundColor: "#DF2929",
     borderColor: "#FFFFFF",
@@ -176,35 +184,20 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
 
-  cardBackground: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 1,
-  },
-  innerShadow: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 2,
-  },
-
   optionTextBase: {
     fontFamily: "Outfit_300Light",
     fontSize: 16,
     zIndex: 3,
     textAlign: "center",
   },
+
   optionText: {
     color: "#FFFFFF",
     fontFamily: "Outfit_300Light",
     fontSize: 16,
     zIndex: 3,
   },
+
   optionTextDark: {
     color: "#01748C",
     fontFamily: "Outfit_300Light",
@@ -213,7 +206,7 @@ const styles = StyleSheet.create({
   },
 
   bottomBar: { width: "100%", alignItems: "center", marginTop: 30 },
-  nextButton: { width: 333, height: 58, marginTop: 70 },
+  nextButton: { width: 333, height: 58, marginTop: 30 },
   nextButtonGradient: {
     width: "100%",
     height: "100%",
@@ -237,7 +230,6 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
 });
-// --- FIM DOS ESTILOS ---
 
 export default function QuizScreen() {
   const router = useRouter();
@@ -259,7 +251,6 @@ export default function QuizScreen() {
     return null;
   }
 
-  // --- FUNÇÕES DE LÓGICA ---
   const handleSelectAnswer = (id) => {
     if (!isAnswerSubmitted) {
       setSelectedAnswerId(id);
@@ -291,7 +282,6 @@ export default function QuizScreen() {
     }
   };
 
-  // 3. Lógica de Estilo Dinâmico (Mudar as Cores)
   const getCardStyle = (id) => {
     const isSelected = id === selectedAnswerId;
     const isCorrect = id === currentQuestion.correctAnswer;
@@ -313,14 +303,13 @@ export default function QuizScreen() {
     const isCorrect = id === currentQuestion.correctAnswer;
 
     if (!isAnswerSubmitted) {
-      return styles.optionTextDark;
+      return isSelected ? styles.optionText : styles.optionTextDark;
     } else {
       if (isCorrect || (isSelected && !isCorrect)) return styles.optionText;
       return styles.optionTextDark;
     }
   };
 
-  // O que vai escrito no botão de rodapé
   let nextButtonText = "Enviar resposta";
   if (isAnswerSubmitted) {
     nextButtonText =
@@ -343,12 +332,10 @@ export default function QuizScreen() {
       />
 
       <SafeAreaView style={styles.safeArea}>
-        {/* Bloco de Cabeçalho */}
         <LinearGradient
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
         >
-          {/* --- Botão Voltar --- */}
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => router.back()}
@@ -357,19 +344,14 @@ export default function QuizScreen() {
           </TouchableOpacity>
         </LinearGradient>
 
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          {/* 3. Card VÍDEO (Pergunta) */}
+        <View style={styles.fixedContent}>
           <View style={styles.questionCard}>
             <Video
-              // --- CORREÇÃO DO VÍDEO TRAVADO ---
-              key={currentQuestion.id} // Isso força o vídeo a recarregar quando a pergunta muda
-              // ---------------------------------
+              key={currentQuestion.id}
               source={currentQuestion.videoUrl}
               style={styles.videoPlayer}
               shouldPlay={true}
-              // --- CORREÇÃO DO VÍDEO CORTADO ---
-              resizeMode={ResizeMode.CONTAIN} // Usa CONTAIN para mostrar o vídeo inteiro
-              // ---------------------------------
+              resizeMode={ResizeMode.CONTAIN}
               isLooping
               useNativeControls={false}
             />
@@ -377,7 +359,6 @@ export default function QuizScreen() {
 
           <Text style={styles.questionText}>{currentQuestion.question}</Text>
 
-          {/* 4. Opções de Resposta */}
           <View style={styles.optionsContainer}>
             {currentQuestion.options.map((option) => (
               <TouchableOpacity
@@ -395,7 +376,6 @@ export default function QuizScreen() {
             ))}
           </View>
 
-          {/* 5. Botão de Ação */}
           <View style={styles.bottomBar}>
             <TouchableOpacity
               style={styles.nextButton}
@@ -424,7 +404,7 @@ export default function QuizScreen() {
               </LinearGradient>
             </TouchableOpacity>
           </View>
-        </ScrollView>
+        </View>
       </SafeAreaView>
     </View>
   );

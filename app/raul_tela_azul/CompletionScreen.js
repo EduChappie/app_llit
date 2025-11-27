@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// --- NOVO: Importamos o Router e os Parâmetros ---
+
 import {
   Outfit_200ExtraLight,
   Outfit_300Light,
@@ -18,10 +18,7 @@ import {
 } from "@expo-google-fonts/outfit";
 import { useLocalSearchParams, useRouter } from "expo-router";
 
-// --- ESTILOS (Continua o mesmo) ---
 const styles = StyleSheet.create({
-  // ... (Todos os estilos da barra e medalha) ...
-  // --- CORES DA LÓGICA ---
   successColors: ["#0565D9", "#0AB6FC", "#0565D9"],
   failureColors: ["#E40000", "#620000", "#E40000"],
   container: { flex: 1 },
@@ -145,7 +142,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// --- REMOVIDO { navigation } ---
 export default function CompletionScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
@@ -163,7 +159,6 @@ export default function CompletionScreen() {
     return null;
   }
 
-  // --- LÓGICA DE RESULTADO (OS 4 CASOS) ---
   const result = (() => {
     if (score === total) {
       return {
@@ -172,7 +167,7 @@ export default function CompletionScreen() {
           "Você completou sua primeira conversa básica em LIBRAS! Continue praticando para dominar novas formas de se comunicar.",
         colors: styles.successColors,
         buttonText: "Maravilha!",
-      }; // 3/3
+      };
     }
     if (score === 2 && total === 3) {
       return {
@@ -181,7 +176,7 @@ export default function CompletionScreen() {
           "Ficamos felizes pelo seu desempenho. Mas não se esqueça, a prática leva a perfeição!",
         colors: styles.successColors,
         buttonText: "Maravilha!",
-      }; // 2/3
+      };
     }
     if (score === 1 && total === 3) {
       return {
@@ -190,7 +185,7 @@ export default function CompletionScreen() {
           "Ficamos felizes pelo seu desempenho. Mas não se esqueça, a prática leva a perfeição!",
         colors: styles.successColors,
         buttonText: "Maravilha!",
-      }; // 1/3
+      };
     }
     return {
       title: "Não foi dessa vez :(",
@@ -198,24 +193,22 @@ export default function CompletionScreen() {
         "Não se desmotive! Continue treinando as suas habilidades em LIBRAS para dominar de maneira simples e divertida.",
       colors: styles.failureColors,
       buttonText: "Voltar ao início",
-    }; // 0/3 (ou qualquer outro)
+    };
   })();
 
   return (
-    // Fundo Principal - VAI MUDAR DEPENDENDO DO RESULTADO
     <LinearGradient colors={result.colors} style={styles.container}>
       <LinearGradient
         colors={[
           "transparent",
           score === 0 ? styles.failureColors[1] : "#0024BB",
-        ]} // Usa cor escura de falha ou sucesso
+        ]}
         locations={[0.4, 1.0]}
         style={StyleSheet.absoluteFill}
       />
 
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          {/* --- ÍCONE DA MEDALHA --- */}
           <View style={styles.medalContainer}>
             <Image
               source={require("@/assets/raul_assets/hexa.png")}
@@ -227,7 +220,6 @@ export default function CompletionScreen() {
             />
           </View>
 
-          {/* 4. Barra de Progresso (Com a frase do score) */}
           <View style={styles.scoreBarContainer}>
             <Text style={styles.scoreTextInsideBar}></Text>
             <View style={styles.progressBarWrapper}>
@@ -254,17 +246,14 @@ export default function CompletionScreen() {
             </View>
           </View>
 
-          {/* 5. Texto "Parabéns!" / "Não foi dessa vez" */}
           <Text style={styles.title}>{result.title}</Text>
 
-          {/* 6. Texto Subtítulo */}
           <Text style={styles.subtitle}>{result.message}</Text>
 
-          {/* 7. Botão de Ação */}
           <View style={styles.bottomBar}>
             <TouchableOpacity
               style={styles.actionButton}
-              onPress={() => router.replace("/")} // Volta para a Home
+              onPress={() => router.replace("/raul_tela_azul")}
             >
               <LinearGradient
                 colors={["#FFBE0B", "#FB7907"]}

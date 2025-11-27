@@ -2,7 +2,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -15,6 +14,7 @@ import {
   Outfit_700Bold,
   useFonts,
 } from "@expo-google-fonts/outfit";
+import { ResizeMode, Video } from "expo-av";
 import { useRouter } from "expo-router";
 
 export default function ActivityScreen() {
@@ -45,9 +45,7 @@ export default function ActivityScreen() {
         style={StyleSheet.absoluteFill}
       />
 
-      {/* 2. O CONTEÚDO */}
       <SafeAreaView style={styles.safeArea}>
-        {/* Bloco de Cabeçalho */}
         <LinearGradient
           colors={["#09A7F5", "#0673DF"]}
           style={styles.headerBlock}
@@ -60,7 +58,7 @@ export default function ActivityScreen() {
           </TouchableOpacity>
         </LinearGradient>
 
-        <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.fixedContent}>
           <View style={styles.cardCyan}>
             <LinearGradient
               colors={["#00A3CB", "transparent"]}
@@ -78,11 +76,29 @@ export default function ActivityScreen() {
               colors={["#29DBDF", "#07BEF8"]}
               style={styles.cardBackground}
             />
+
+            <Video
+              source={require("@/assets/raul_assets/introdutorio_video.mp4")}
+              style={styles.videoPlayer}
+              shouldPlay={true}
+              resizeMode={ResizeMode.CONTAIN}
+              isLooping
+              useNativeControls={false}
+            />
           </View>
 
-          <View style={styles.cardWhite} />
+          <View style={styles.cardWhite}>
+            <Video
+              source={require("@/assets/raul_assets/libras_introdutorio_video.mp4")}
+              style={styles.videoPlayer}
+              shouldPlay={true}
+              resizeMode={ResizeMode.CONTAIN}
+              isLooping
+              useNativeControls={false}
+            />
+          </View>
+          <View style={{ flex: 1 }} />
 
-          {/* Botão "Próximo passo"  */}
           <View style={styles.bottomBar}>
             <TouchableOpacity
               style={styles.nextButton}
@@ -110,13 +126,12 @@ export default function ActivityScreen() {
               </LinearGradient>
             </TouchableOpacity>
           </View>
-        </ScrollView>
+        </View>
       </SafeAreaView>
     </View>
   );
 }
 
-// --- ESTILOS ---
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -145,22 +160,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  scrollContent: {
+
+  fixedContent: {
+    flex: 1,
     padding: 20,
-    paddingBottom: 40,
     alignItems: "center",
-    backgroundColor: "transparent",
+    width: "100%",
   },
+
   cardCyan: {
-    marginTop: 70,
+    marginTop: 30,
     width: 380,
-    height: 312,
+    height: 218,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: "rgba(255, 255, 255, 0.36)",
     marginBottom: 20,
     overflow: "hidden",
+
+    justifyContent: "center",
+    alignItems: "center",
   },
+
+  videoPlayer: {
+    width: "100%",
+    height: "100%",
+    zIndex: 10,
+  },
+
   cardBackground: {
     position: "absolute",
     top: 0,
@@ -178,15 +205,20 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   cardWhite: {
-    width: 379,
-    height: 229,
+    width: 378,
+    height: 213.5,
     borderRadius: 20,
     backgroundColor: "#FFFFFF",
+
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 0,
   },
   bottomBar: {
     width: "100%",
     alignItems: "center",
-    marginTop: 30,
+    marginBottom: 20,
   },
   nextButton: {
     width: 333,

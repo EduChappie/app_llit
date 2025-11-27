@@ -34,7 +34,6 @@ export default function ShareModal({ visible, onClose }) {
       onRequestClose={onClose}
     >
       <BlurView intensity={80} tint="dark" style={StyleSheet.absoluteFill}>
-        {/* ... (O restante do código do modal) ... */}
         <View style={styles.centeredView}>
           <View style={styles.modalContentContainer}>
             <View style={styles.card1}>
@@ -52,30 +51,28 @@ export default function ShareModal({ visible, onClose }) {
                 Compartilhe com os seus amigos e familiares
               </Text>
 
-              {/* COMPARTILHAMENTO (PNGs Integrados) */}
               <View style={styles.shareButtonsContainer}>
-                {/* WhatsApp */}
                 <TouchableOpacity style={styles.iconButtonWrapper}>
                   <Image
                     source={require("@/assets/raul_assets/icone_zap_share.png")}
                     style={styles.socialIcon}
                   />
                 </TouchableOpacity>
-                {/* Instagram */}
+
                 <TouchableOpacity style={styles.iconButtonWrapper}>
                   <Image
                     source={require("@/assets/raul_assets/icone_instagram_share.png")}
                     style={styles.socialIcon}
                   />
                 </TouchableOpacity>
-                {/* TikTok */}
+
                 <TouchableOpacity style={styles.iconButtonWrapper}>
                   <Image
                     source={require("@/assets/raul_assets/icone_tiktok_share.png")}
                     style={styles.socialIcon}
                   />
                 </TouchableOpacity>
-                {/* Facebook */}
+
                 <TouchableOpacity style={styles.iconButtonWrapper}>
                   <Image
                     source={require("@/assets/raul_assets/icone_facebook_share.png")}
